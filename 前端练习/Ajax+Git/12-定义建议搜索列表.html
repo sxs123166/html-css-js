@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <!-- tab栏区域 -->
+        <div class="tabs"></div>
+        <!-- 搜索区域 -->
+        <div class="search-box"></div>
+
+        <!-- 搜素建议列表 -->
+        <div id="suggest-list"></div>
+    </div>
+
+    <!-- 定义模板结构 -->
+    <!-- 模板结构 -->
+    <script type="text/html" id="tpl-suggestList">
+        {{each result}}
+          <div class="suggest-item">{{$value[0]}}</div>
+        {{/each}}
+    </script>
+
+    <!-- 定义渲染模板结构的函数 -->
+    <script>
+        // 渲染建议列表
+        function renderSuggestList(res) {
+            // 如果没有需要渲染的数据， 则直接 return
+            if (res.result.length <= 0) {
+                return $('suggest-list').empty().hide()
+            }
+            //渲染模板结构
+            var htmlStr = template('tpl-suggestList', res)
+            $('#suggest-list').html(htmlStr).show()
+        }
+    </script>
+
+    <!-- 搜索关键词为空时隐藏搜索建议列表 -->
+    <script>
+        $('#ipt').on('keyup', function() {
+            // 获取用户输入的内容
+            var keywords = $(this).val().trim()
+            // 判断用户输入的内容是否为空
+            if(keywords.length <= 0) {
+                // 如果关键词为空， 则清空后隐藏建议搜索列表
+                return $('suggest-list').empty().hide()
+            }
+        })
+        getSuggestList(keywords)
+    </script>
+</body>
+</html>

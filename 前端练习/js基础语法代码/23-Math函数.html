@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        console.log(Math.PI);
+        console.log(Math.max(1,99,3));
+        console.log(Math.max(1,99,'skyblue'));  //NaN
+        console.log(Math.max()); //-Infinity
+        //传递任意个数参数
+        var myMath = {
+            PI: 3.14,
+            max: function() {
+                var max = arguments[0];
+                for(var i = 1; i < arguments.length; i++){
+                    if(arguments[i] > max){
+                        max = arguments[i];
+                    }
+                }
+                return max;
+            }
+        }
+
+        //向下取整
+        Math.floor();
+        //向上取整
+        Math.ceil();
+        // 四舍五入 就近取整 注意-3.5取整结果是 -3
+        Math.round();
+        // 取绝对值
+        Math.abs();
+        //随机数 范围[0,1)
+        console.log(Math.random());
+        //得到两个数之间的随机整数
+        Math.floor(Math.random()*(max - min)) + min;
+        //得到一个两数之间的随机整数，包含两个数在内
+        Math.floor(Math.random() * (max - min + 1)) + min;
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

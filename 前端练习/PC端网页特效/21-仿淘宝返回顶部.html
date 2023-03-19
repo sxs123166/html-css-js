@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            top: 300px;
+            margin-left: 600px;
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+
+        .banner {
+            height: 250px;
+            background-color: skyblue;
+        }
+
+        .main {
+            height: 5000px;
+            background-color: yellowgreen;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+
+    <script>
+        // 1.需要用到页面滚动事件scroll因为是页面滚动，所以事件源是dicument
+        // 2.滚动到某个位置，就是判断页面被卷去的上部值
+        // 3.页面被卷去的头部：可以通过window.pageYOffset获得  如果是被卷去的左侧window.pageXOffset
+        // 4.注意，元素被卷去的头部是element.scrollTop,如果是页面被卷去的头部则是window.PageYOffset
+
+        
+        var sliderbar = document.querySelector('.slider-bar');
+        var banner = document.querySelector('.banner');
+        // banner.offsetTop 就是被卷去的头部的大小
+        var bannerTop = banner.offsetTop;
+        // 获取main 主体元素
+        var main = document.querySelector('.main');
+        var goBack = document.querySelector('.goBack');
+        var mainTop = main.offsetTop;
+        var sliderTop = sliderbar.offsetTop - bannerTop;
+        console.log(banner.offsetTop);
+
+
+
+        document.addEventListener('scroll', function() {
+            // console.log(11);
+            // 3.当我们页面被卷去的头部大于等于172时  此时  侧边栏就要改为固定定位
+            if (window.pageYOffset >= bannerTop) {
+                sliderbar.style.position = 'fixed';
+                sliderbar.style.top = sliderTop + 'px';
+            }else {
+                sliderbar.style.position = 'absolute';
+                sliderbar.style.top = '300px';
+            }
+            //当我们页面滚动到main盒子，就显示goBack模块
+          
+            if (window.pageYOffset >= mainTop) {
+                goBack.style.display = 'block';
+            }else {
+                goBack.style.display = 'none';
+            }
+
+        })
+
+        // 点击返回顶部，就让窗口滚动到页面的最上方
+        goBack.addEventListener('click', function() {
+            // 里面的x和y不跟单位
+           animate(window, 0);
+        });
+
+       function animate(obj, target, callback) {
+          clearInterval(obj.timer);
+          obj.timer = setInterval(function() {
+          var step = (target - obj.pageYOffset)/10;
+          step = step > 0 ? Math.ceil(step) : Math.floor(step);
+          if(obj.pageYOffset == target) {
+            clearInterval(obj.timer);
+            // if(callback) {
+            //     callback();
+            // }
+            callback && callback();
+        }
+        // obj.style.left = obj.pageYoffset + step + 'px';
+        obj.scroll(0,obj.pageYOffset + step);
+    },15)
+}
+    </script>
+</body>
+</html>

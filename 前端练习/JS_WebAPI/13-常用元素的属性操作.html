@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="sherry">雪莉</button>
+    <button id="qi">柒</button><br>
+    <img src="images/sherry.jpg" title="雪莉">
+    <script>
+        // 常用元素的属性操作
+        // 1. innerText、innerHTML改变元素内容
+        // 2.src、href
+        // 3. id、alt、title
+    </script>
+
+    <script>
+        // 修改元素属性 src
+        // 1. 获取元素
+        var sherry = document.getElementById('sherry');
+        var qi = document.getElementById('qi');
+        var img = document.querySelector('img');
+        // 2. 注册事件 处理程序
+        qi.onclick = function() {
+            img.src = 'images/7.png';
+            img.title = '柒';
+        }
+
+        sherry.onclick = function() {
+            img.src = 'images/sherry.jpg';
+            img.title = '雪莉';
+        }
+
+
+    </script>
+
+     
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // var age = 200; //定义了此之后输出的是这里的值 即age
+        // 对象没有产生作用域，所以箭头函数实际上被定义在了全局作用域下
+        var obj = {
+            age: 20,
+            say: () => {
+                alert(this.age);
+            }
+        }
+
+        obj.say();
+    </script>
+</body>
+</html>

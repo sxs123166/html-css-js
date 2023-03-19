@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            overflow: hidden;
+            margin: 200px auto;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            background-color: purple;
+        }
+        .son {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            line-height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">son盒子</div>
+    </div>
+    
+    <script>
+
+        // 组织事件冒泡的两种方法
+    //  标准写法  1. e.stopPropagation
+    //  非标准写法  IE6-8利用事件对象cancelBubble属性
+         var son = document.querySelector('.son');
+        son.addEventListener('click', function() {
+            alert('son');
+            e.stopPropagation();
+            e.cancelBubble = true; //阻止冒泡
+        },false);
+
+        var father = document.querySelector('.father');
+        father.addEventListener('click',function() {
+            alert('father');
+        },false);
+
+        document.addEventListener('click', function() {
+            alert('document');
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 普通函数  普通函数的this指向window
+        function fn() {
+            console.log('1');
+        }
+        // 2. 对象的方法
+        var o = {
+            sayHi: function() {
+                console.log("2");
+            }
+        }
+        o.sayHi();
+        // 3. 构造函数  构造函数的this指向ldh这个实例对象  原型对象里面的this指向的也是ldh这个实例对象
+        function Star() {};
+        Star.prototype.sing = function() {
+
+        }
+        new Star();
+        // 4. 绑定事件函数 this 指向的是函数的调用者 btn这个按钮对象
+        btn.onclick = function() {};  //点击了按钮就可以调用这个函数
+        // 5. 定时器函数  this指向的也是window
+        window.setTimeout(function() {}, 1000);
+        // 6. 立即执行函数 this还是指向的还是window
+        (function() {
+            console.log('人生的巅峰');
+        })();
+        // 立即执行函数自动调用
+        </script>
+</body>
+</html>

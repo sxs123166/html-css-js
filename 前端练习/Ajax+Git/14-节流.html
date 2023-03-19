@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 节流策略：顾名思义，可以较少一段时间内事件的触发频率
+
+        // 节流的应用场景
+        // 1.鼠标连续不断的触发事件（如点击），只在单位时间内只触发一次
+        // 2.懒加载时要监听计算滚动条的位置，但不必每次滑动都触发可以降低计算的频率，而不必去浪费CPU的资源
+
+
+        // 3.节流阀的概念
+        // 高铁卫生间是否被占用，有红绿灯控制，红灯表示被占用，绿灯表示可以使用。
+        // 假设每个人上卫生间都需要花费5分钟，则5分钟之内，被占用的卫生间无法被其他人使用
+        // 上一个人使用完毕后，需要将红灯重置为绿灯，表示下一个人可以使用卫生间
+        // 下一个人在上卫生间之前，需要先判断控制灯是否为绿色，来知晓是否是能上卫生间
+
+        // 节流阀为空，表示可以执行下次操作；不为空，表示不能执行下次操作
+        // 当前操作执行完，必须将节流阀重置为空，表示可以执行下次操作了
+        // 每次执行操作前，必须先判断节流阀是否为空
+
+        // 使用节流阀
+
+        $(function() {
+            var angel = $('#angel')
+            var timer = null //1.预定义一个timer节流阀
+            $(document).on('mousemove', function(e) {
+                if(timer) {return} //判断节流阀是否为空，如果不为空，则证明距离上次执行间隔不足16毫秒
+                timer = setTimeout(function() {
+                    $(angel).css('left', e.pageX + 'px').css('top', e.pageY + 'px')
+                    timer = null //2. 当设置了鼠标跟随效果后，清空timer节流阀，方便下次开启延时器
+                }, 16)
+            })
+        })
+    </script>
+</body>
+</html>

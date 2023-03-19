@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.将本地分支推送到远程仓库
+        // 如果是第一次将本地分支推送到远程仓库，需要运行如下的命令：
+        // # -u 表示把本地分支和远程分支进行关联，指在第一次推送的时候需要带 -u 参数
+
+        // git push -u 远程仓库的别名 本地分支名称：远程分支名称
+
+        // # 实际案例
+        // git push -u origin payment:pay
+
+        // #如果希望远程分支的名称和本地分支名称保持一致， 可以对命令进行简化
+        // git push -u origin payment
+        // 注意第一次推送分支需要带-u参数，此后可以直接使用git push推送代码到远程分支
+
+        // 2.查看远程仓库中所有的分支列表
+        // git remote show 远程仓库的名称
+
+        // 3.跟踪分支
+        // 跟踪分支指的是：从远程仓库中，把远程分支下载到本地仓库中。需要运行的命令为：
+        // # 从远程仓库中，把对应的远程分支下载到本地仓库中。保持本地分支和远程分支名称相同：
+        // git checkout 远程分支的名称
+
+        // # 示例：
+        // git checkout pay
+
+        // #从远程仓库中，把对应的远程分支下载到本地仓库，并把下载的本地分支进行重命名
+        // git checkout -b 本地分支名称 远程仓库名称/远程分支名称
+        // # 示例
+        // git checkout -b payment origin/pay
+
+        // 4.拉取远程分支的最新的代码
+        // 可以使用如下命令，把远程分支最新的代码下载到本地对应的分支中：
+        // # 从远程仓库，拉取当前分支最新的代码。保持当前分支的代码和远程分支代码一致
+        // git pull
+
+        // 5.删除远程分支
+        // 可以使用如下的命令，删除远程仓库中指定的分支
+        // # 删除远程仓库中，指定的分支名称
+        // git push 远程仓库的名称 --delete 远程分支的名称
+        // # 示例：
+        // git push origin --delete pay
+
+
+        // 关于git pull 与git pull --rebase
+        // 见：
+        //   https://blog.csdn.net/yao_hou/article/details/108178717
+
+    </script>
+</body>
+</html>

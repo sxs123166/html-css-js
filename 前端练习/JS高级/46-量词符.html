@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 量词符：用来设定某个字符出现的次数
+        // 简单理解：就是让下面的a这个字符出现多少次
+
+        // 量词             说明
+        // *              重复零次或更多次
+        // +              重复一次或更多次
+        // ?              重复零次或一次
+        // {n}            重复n次
+        // {n,}           重复n次或更多次
+        // {n,m}          重复n次到m次
+        // var reg = /^a$/;
+
+        // * 相当于 >= 0 可以出现0次或者很多次
+        var reg = /^a*$/;
+        console.log(reg.test(''));
+        console.log(reg.test('a'));
+        console.log(reg.test('aaaa'));
+
+        // +  相当于 >= 1 可以出现1次或很多次
+        var reg = /^a+$/;
+        console.log(reg.test(''));
+        console.log(reg.test('a'));
+        console.log(reg.test('aaaa'));
+        // ？ 相当于 1｜｜ 0
+        var reg = /^a?$/;
+        console.log(reg.test(''));
+        console.log(reg.test('a'));
+        console.log(reg.test('aaaaa'));
+
+        // {3 } 就是重复3次  
+        var reg = /^a{3}$/;  //只有3个重复的a符合条件
+        console.log(reg.test(''));  //
+        console.log(reg.test('a'));
+        console.log(reg.test('aaaaa'));
+
+         // {3， } 大于等于3 
+         var reg = /^a{3,}$/;  
+        console.log(reg.test(''));  //
+        console.log(reg.test('a'));
+        console.log(reg.test('aaaaa'));
+
+        // {3, 16} 大于等于3 并且 小于等于16
+        var reg = /^a{3, 6}$/;  
+        console.log(reg.test(''));  //
+        console.log(reg.test('a'));
+        console.log(reg.test('aaaaa'));
+        console.log(reg.test('aaaaaaaaa'));
+
+    </script>
+</body>
+</html>

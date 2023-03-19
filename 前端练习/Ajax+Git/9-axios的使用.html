@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1"></button>
+    <button id="btn2"></button>
+    <script>
+        // 什么是axios
+        Axios是专注于网络数据请求的库
+
+        // 相比于原生的XMLHttpRequest对象，axios简单易用，相比于jQuery，axios更加轻量化，只专注于数据网络请求
+
+        // axios发起get请求的语法
+        axios.get('url', {params: {/*参数*/}}).then(callback)
+        // 具体的示例请求如下：
+        // 请求的URL地址
+        var url = 'http://www.liulongbin.top:3036/api/get'
+        // 请求参数对象
+        var paramsObj = {name: 'zs', age:20}
+        // 调用 axios.get() 发起GET请求
+        axios.get(url, {params : paramsObj}).then(function(res){ 
+            // res.data 是服务器返回的数据
+            var result = res.data
+            console.log(res);
+        })
+    </script>
+
+    <script>
+        // axios发起get请求
+        document.querySelector('#btn1').addEventListener('click', function() {
+            var url = 'http://www.liulongbin.top:3006/api/get'
+            var paramsObj = {name: 'zs', age: 20}
+            axios.get(url,{params   : paramsObj}).then(function(res) {
+                console.log(res.data);
+            })
+        })
+        axios发起post请求
+        document.querySelector('#btn2').addEventListener('click', function() {
+            var url = 'http://www.liulongbin.top:3006/api/get'
+            var dataObj = {address: '北京', location: '顺义'}
+            axios.get(url,{params: dataObj}).then(function(res) {
+                console.log(res.data);
+            })
+        })
+
+         直接使用axios发起请求
+        //  axios也提供了类似于jQuery中$.ajax()的函数，语法如下：
+        axios({
+            method: '请求地址',
+            url: '请求的URL地址',
+            data: {/*POST数据*/},
+            params: {/*get参数*/}
+        }).then(callback)
+
+        // 发起get请求
+        document.querySelector('#btn3').addEventListener('click', function() {
+            var url = 'http://www.liulongbin.top:3006/api/get'
+            var paramsData = {name:'钢铁侠', age: 35}
+            axios({
+                method: 'GET',
+                url: url,
+                params: paramsData
+            }).then(function(res){
+                console.log(res.data);
+            })
+        })
+
+        // 发起post请求
+        document.querySelector('#btn4').addEventListener('click', function() {
+            var url = 'http://www.liulongbin.top:3006/api/get'
+            var paramsData = {name:'钢铁侠', age: 35}
+            axios({
+                method: 'POST',
+                url: url,
+                data: {
+                    name: '哇哈哈',
+                    age: 18,
+                    gender: '女'
+                }
+            }).then(function(res){
+                console.log(res.data);
+            })
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="inner"></div>
+    <div class="create"></div>
+
+    <script>
+
+        // 1.document.write()
+        // 2.element.innerHTML()
+        // 3.document.createElement()
+
+    // 区别：
+    // 1.document.write是直接将内容写入页面的内容流，但是文档流执行完毕，则它会导致页面重绘
+
+
+    // 2. innerHTML 创建元素
+    var inner = document.querySelector('.inner');
+    var arr = [];
+    for(var i = 0; i <= 100; i++) {
+        // inner.innerHTML += '<a href="#">百度</a>';
+        arr.push('<a href="#>百度</a>');
+    }
+    inner.innerHTML = arr.join('');
+    // 3. document.createElement() 创建元素
+    var create = document.querySelector('.create');
+    for(var i = 0; i <= 100; i++) {
+        var a = document.createElement('a');
+        create.appendChild(a);
+    }
+
+    // 总结：
+    // 2.innerHTML 是将内容写入到某个DOM节点，不会导致页面重绘
+    // 3.innerHTML 创建数组效率更高（不要拼接字符串，采取数组形式），结构稍复杂
+    // 4.createElement() 创建多个元素效率稍微低一点点， 但是结构更清晰
+
+    // 总结：不同浏览器下，innerHTML效率比createElement高
+    </script>
+
+
+
+</body>
+</html>

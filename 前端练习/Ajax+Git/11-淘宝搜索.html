@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 获取用户输入的搜索关键词
+        // 为了获取到用户每次按下键盘输入的内容，需要监听输入框的keyup事件，示例代码为：
+        
+        // 监听文本框的keyup事件
+        $('#ipt').on('keyup', function() {
+            //获取用户输入的内容
+            if(keywords <= 0) {
+                return
+            }
+        })
+
+        // 封装getSuggestList函数
+        // 将获取搜索建议列表的代码，封装到getSuggestList函数中，示例代码如下：
+        function getSuggestList(kw) {
+            $.ajax({
+                //指定请求的URL地址，其中，q是用户输入的关键字
+                url: '' + kw,
+                // 指定要发起的是JSONP请求
+                dataType: 'jsonp',
+                // 成功的回调函数
+                success: function(res) {
+                    console.log(res);
+                }
+            })
+        }
+    </script>
+</body>
+</html>

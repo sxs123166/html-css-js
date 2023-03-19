@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // 没有返回值时 函数返回的是undefined
+        function sayHi() {
+            console.log('Hello,world');
+        }
+
+        sayHi();
+
+        function cook(a) {
+            console.log(a);
+        }
+
+        cook(a);
+
+
+        function getSum(num1,num2) {
+            console.log(num1 + num2);
+        }
+        //如果实参的个数多余形参的个数  会取形参的个数
+        getSum(1,2,3);
+        //如果实参的个数小于形参的个数
+        // 形参可以看作是不用声明的变量  num2 是一个变量但是没有接受值  结果就是undefined
+        getSum(1);//NaN
+
+        return num1,num2;
+        //return 返回最后一个值
+        // 函数没有return 输出是 得到的是undefined
+        console.log(sayHi());
+
+        // Arguments的使用
+        // 只有函数才有arguments对象  而且是每个函数都内置好了这个arguments
+        function fn() {
+            console.log(arguments);
+            console.log(arguments.length);
+            console.log(arguments[2]);
+            //我们可以按照数组的方式便利arguments
+            for(var i = 0;i<arguments.length;i++){
+                console.log(arguments[i]);
+            }
+        }
+
+
+        fn(1,2,3);
+        //伪数组  并不是真正意义上的数组
+        //1. 具有数组的length属性
+        //2.按照索引的方式进行存储的
+        //3.他没有真正数组的一些方法 pop() push() 等等
+
+
+
+        //函数的第二种声明方式
+        //函数表达式（匿名函数）
+        var 变量名 = function(){};
+        var fun = function(aru) {
+            console.log('函数表达式');
+            console.log(aru);
+        };
+        fun('你看');
+        //fun是变量名 不是函数名
+        //函数表达式声明方式跟声明变量差不多，只不过变量里面存在的是值 而函数表达式里面存放的是函数
+        //函数表达式也可以进行传递参数
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

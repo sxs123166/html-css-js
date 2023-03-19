@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1. art-template标准语法
+
+        art-template提供了{{}}这种语法格式，在{{}}内可以进行变量输出，或循环数组等操作，这种{{}}语法在art-template
+        中被称为标准语法
+
+        // 2. 标准语法-输出
+        {{value}}
+        {{obj.key}}
+        {{obj['key']}}
+        {{a ? b : c}}
+        {{a || b}}
+        {{a + b}}
+
+        // 在{{}}语法中，可以进行变量的输出、对象属性的输出、三元表达式的输出、逻辑或输出、加减乘除等表达式输出
+
+        // 3.标准语法-原文输出
+        {{@ value}}
+        如果要输出的value值中， 包含了HTML标签结构，则需要使用原文输出语法，才能保证HTML标签被正常渲染
+
+        4.语法标准-条件输出
+        // 如果要实现条件输出，则可以在{{ }}中使用if..else if.../if的方式，进行按需输出
+        {{if value}} 按需输出内容{{/if}}
+        {{if v1}} 按需输出的内容 {{else if v2}} 按需输出的内容 {{/if}}
+
+
+        // 5.标准语法，循环输出
+        如果要实现循环输出，则可以在{{ }}内，通过each语法循环数组，当前循环的索引使用$index进行访问
+        当前的循环项使用$value进行访问
+
+        {{each arr}}
+                 {{$index}} {{$value}}
+        {{/each}}
+
+        6.标准语法：过滤器
+        {{value | filterName}}
+        // 过滤器语法类似管道操作符，它的上一个输出作为下一个输入
+
+        // 定义过滤器的基本语法如下：
+        template.defaults.imports.filterName = function(value){/*return处理的结果*/}
+
+        如：
+        <div>注册时间：{{regTime | dateFormat}}</div>
+        定义一个格式化时间的过滤器dateFormat如下：
+        template.defaults.imports.dateFormat = function(date) {
+            var y = date.getFullYear()
+            var m = date.getMonth() + 1
+            var d = date.getDate()
+
+            return y + '-' + m + '-' + d //注意，过滤器最后一个一定要return 一个值
+        }
+
+    </script>
+</body>
+</html>
